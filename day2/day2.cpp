@@ -6,7 +6,7 @@
 #include <cmath>
 
 // forward declarations
-std::vector<std::string> read_all_lines(std::string const& filename);
+std::vector<std::string> read_all_lines(const std::string& filename);
 bool isSafe(const std::string& report);
 bool isSafe(std::vector<int> nums);
 std::vector<int> splitString(const std::string&, char delim);
@@ -59,7 +59,7 @@ Part 2:
 */
 
 // Read all the lines in the file
-std::vector<std::string> read_all_lines(std::string const& filename){
+std::vector<std::string> read_all_lines(const std::string& filename){
     std::ifstream file(filename); 
 
     std::vector<std::string> lines;

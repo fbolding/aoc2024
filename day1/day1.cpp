@@ -6,8 +6,8 @@
 #include <cmath>
 
 // forward declarations
-std::vector<std::string> read_all_lines(std::string const& filename);
-void split_vector(std::vector<std::string>const& string_vector, std::vector<int>& left, std::vector<int>& right);
+std::vector<std::string> read_all_lines(const std::string& filename);
+void split_vector(const std::vector<std::string>& string_vector, std::vector<int>& left, std::vector<int>& right);
 void sort_vector(std::vector<int>& vector);
 int count_occurences(const std::vector<int> vector, int value);
 
@@ -57,7 +57,7 @@ int main(){
 // 1. part 1 1-3
 
 // Read all the lines in the file
-std::vector<std::string> read_all_lines(std::string const& filename){
+std::vector<std::string> read_all_lines(const std::string& filename){
     std::ifstream file(filename); 
 
     std::vector<std::string> lines;
@@ -71,7 +71,7 @@ std::vector<std::string> read_all_lines(std::string const& filename){
     return lines; 
 }
 
-void split_vector(std::vector<std::string>const& string_vector, std::vector<int>& left, std::vector<int>& right){
+void split_vector(const std::vector<std::string>& string_vector, std::vector<int>& left, std::vector<int>& right){
     std::string delim = "   ";
     for (const std::string& line: string_vector){
         std::string lstr =  line.substr(0, line.find(delim));
