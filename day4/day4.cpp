@@ -5,7 +5,7 @@
 #include <fstream>
 
 // forward declarations
-std::vector<std::vector<char>> read_all_lines(std::string const& filename);
+std::vector<std::vector<char>> read_all_lines(const std::string& filename);
 bool found_word(const std::vector<std::vector<char>>& input, std::string word, const size_t& height, const size_t& width, size_t row, size_t col, const std::pair<int,int>& direction);
 
 
@@ -69,7 +69,7 @@ Part 2:
 */
 
 // Read all the lines in the file
-std::vector<std::vector<char>> read_all_lines(std::string const& filename){
+std::vector<std::vector<char>> read_all_lines(const std::string& filename){
     std::ifstream file(filename); 
 
     std::vector<std::vector<char>> array;

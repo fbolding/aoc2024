@@ -10,7 +10,7 @@
 #include <chrono>
 
 // forward declarations
-void read_input(std::string const& filename, std::vector<std::pair<int,int>>& rules, std::vector<std::vector<int>>& updates);
+void read_input(const std::string& filename, std::vector<std::pair<int,int>>& rules, std::vector<std::vector<int>>& updates);
 std::array<std::vector<int>, 100> get_rule_array(const std::vector<std::pair<int,int>>& rules); // Array where index is value which should be placed before all values in vector at location 
 bool check_update(const std::vector<int>& update, const std::array<std::vector<int>, 100>& rule_array);
 inline int get_middle_value(const std::vector<int>& update);
@@ -58,7 +58,7 @@ Part 2:
 */
 
 // Read all the lines in the file
-void read_input(std::string const& filename, std::vector<std::pair<int,int>>& rules, std::vector<std::vector<int>>& updates){
+void read_input(const std::string& filename, std::vector<std::pair<int,int>>& rules, std::vector<std::vector<int>>& updates){
     std::ifstream file(filename); 
 
     bool areRules = true;
