@@ -1,6 +1,9 @@
-.vscode/*
+.vscode
 *.txt
+!CmakeLists.txt
 dayX/*
+build/
+CMakeFiles
 
 # Prerequisites
 *.d
