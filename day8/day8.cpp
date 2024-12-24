@@ -9,14 +9,7 @@
 #include "map.h"
 #include "functions.h"
 using namespace aoc;
-/**
- * @brief Find antinode most proximal to p1. Swap parameters to find all antinodes
- * 
- * @param p1 
- * @param p2 
- * @return Point at antinode, most proximal to p1
- */
-Point calcAntinode(const Point& p1, const Point& p2);
+
 int main(int argc, char *argv[]){
     parseArguments(argc, argv);
     Map input = readAsMap();
@@ -67,8 +60,4 @@ int main(int argc, char *argv[]){
     }
     printSolution(antinodesP2.size(), true);
     return 0;
-}
-
-Point calcAntinode(const Point &p1, const Point &p2){
-    return p1-p2;
 }
