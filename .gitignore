@@ -1,7 +1,8 @@
 .vscode
 *.txt
 !CmakeLists.txt
-dayX/*
+!dayX/sample.txt
+!dayX/input.txt
 build/
 CMakeFiles
 

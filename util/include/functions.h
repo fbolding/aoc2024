@@ -10,11 +10,13 @@ void printSolution(const T& solution= 0, bool isPart2= false){
 }
 
 template <typename T> 
-void printVector(const std::vector<T>& vec){
-    for (const T& val: vec){
-        std::cout << val;
+void printVector(const std::vector<T>& vector, const std::string delim = ""){
+    for (const T& val: vector){
+        std::cout << val << delim;
     }
     std::cout << "\n";
 }
+
+std::vector<std::string> splitString(const std::string& s, const std::string& seperator = " ");
 }
 #endif
