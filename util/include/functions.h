@@ -3,6 +3,9 @@
 #include <cstddef>
 
 namespace aoc{
-void printSolution(const size_t& solution= 0, bool isPart2= false);
+template <typename T> 
+void printSolution(const T& solution= 0, bool isPart2= false){
+    std::cout << "Part "<< (isPart2? 2:1) << ": " << solution << std::endl;
+}
 }
 #endif

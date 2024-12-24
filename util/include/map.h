@@ -12,12 +12,15 @@ public:
         width = input[0].size();
     }
     char at(const Point& point) const { return arr[point.y][point.x];}
+    std::vector<char> operator [](const size_t& row) const { return arr[row];}
+    std::vector<char>& operator [](const size_t& row) { return arr[row];}
     char operator [](const Point& point) const { return arr[point.y][point.x];}
     char& operator [](const Point& point) { return arr[point.y][point.x];}
     friend std::ostream& operator<<(std::ostream& os, const Map& arr);
 
     void printMap() const;
-    bool isInside(const Point& point) const { return (point.x<width && point.y<height);}
+    std::vector<Point> getPoints() const;
+    bool isInside(const Point& point) const { return (point.x >= 0 && point.x<width && point.y>=0 && point.y<height);}
     size_t getHeight() const { return height;}
     size_t getWidth() const { return width;}
 

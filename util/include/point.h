@@ -4,7 +4,18 @@
 namespace aoc{
 struct Point{
 public:
+    Point(){};
     Point(size_t x, size_t y): x(x), y(y) {};
+
+    friend std::ostream& operator<<(std::ostream& os, const Point& p);
+
+    bool operator == (const Point& rhs) const {
+        return x==rhs.x && y==rhs.y;
+    }
+
+    bool operator != (const Point& rhs) const {
+        return !operator==(rhs);
+    }
 
     bool operator < (const Point& rhs) const {
         if (x == rhs.x){ 
@@ -26,9 +37,24 @@ public:
         return Point(scalar*x, scalar*y);
     }
 
-    size_t x;
-    size_t y;
-};
+    Point& operator += (const Point& rhs) {
+        x+=rhs.x;
+        y+=rhs.y;
+        return *this;
+    }
 
+    Point& operator -= (const Point& rhs) {
+        x-=rhs.x;
+        y-=rhs.y;
+        return *this;
+    }
+
+    long x;
+    long y;
+};
+inline std::ostream& operator<<(std::ostream& os, const Point& p){
+    os << '(' << p.x << ',' << p.y << ')';
+    return os;
+}
 };
 #endif

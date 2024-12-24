@@ -1,15 +1,74 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
+#include <set>
 #include <unistd.h>
 #include <fstream>
 #include "input.h"
+#include "map.h"
 #include "functions.h"
-
+using namespace aoc;
+/**
+ * @brief Find antinode most proximal to p1. Swap parameters to find all antinodes
+ * 
+ * @param p1 
+ * @param p2 
+ * @return Point at antinode, most proximal to p1
+ */
+Point calcAntinode(const Point& p1, const Point& p2);
 int main(int argc, char *argv[]){
-    aoc::parseArguments(argc, argv);
+    parseArguments(argc, argv);
+    Map input = readAsMap();
 
-    aoc::printSolution(0, false);
-    aoc::printSolution(0, true);
+    // Part 1
+    std::map<char, std::vector<Point>> antennas;
+    for (const auto p: input.getPoints()){
+        if (input[p]!='.'){
+            antennas[input[p]].push_back(p);
+        }
+    }
+    std::set<Point> antinodesP1;
+    for (const auto& [frequency, vec]: antennas){
+        Point antinode;
+        for (const auto& a1: vec){
+            for (const auto& a2: vec){
+                if (a1==a2){ continue;}
+                antinode = a1 + a1-a2;
+                if (input.isInside(antinode)){
+                    antinodesP1.insert(antinode);
+                }                
+            }
+        }
+    }
+    printSolution(antinodesP1.size(), false);
+
+    // Part 2
+    std::set<Point> antinodesP2;
+    for (const auto& [frequency, vec]: antennas){
+        Point diff;
+        Point antinode;
+        for (const auto& a1: vec){
+            for (const auto& a2: vec){
+                if (a1==a2){ continue;}
+                diff = a1-a2;
+                antinode = a1;
+                while (input.isInside(antinode)){
+                    antinodesP2.insert(antinode);
+                    antinode -= diff;
+                }
+                antinode = a2;
+                while (input.isInside(antinode)){
+                    antinodesP2.insert(antinode);
+                    antinode += diff;
+                }
+            }
+        }
+    }
+    printSolution(antinodesP2.size(), true);
     return 0;
+}
+
+Point calcAntinode(const Point &p1, const Point &p2){
+    return p1-p2;
 }
