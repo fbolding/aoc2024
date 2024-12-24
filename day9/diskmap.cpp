@@ -82,5 +82,4 @@ void DiskMap::moveFilesPart2(){
             compact2[file.first+i] = std::to_string(id);
         }
     }
-
 }
