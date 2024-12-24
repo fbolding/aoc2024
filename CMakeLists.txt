@@ -9,3 +9,4 @@ add_subdirectory(util)
 
 # Add subdirectories for each day's challenge (e.g., day8, day9, etc.)
 add_subdirectory(day8)
+add_subdirectory(day9)
