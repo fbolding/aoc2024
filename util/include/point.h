@@ -49,8 +49,12 @@ public:
         return *this;
     }
 
-    long x;
-    long y;
+    Point north() const { return Point(x,y-1);}
+    Point east() const { return Point(x+1,y);}
+    Point south() const { return Point(x,y+1);}
+    Point west() const { return Point(x-1,y);}
+    size_t x;
+    size_t y;
 };
 inline std::ostream& operator<<(std::ostream& os, const Point& p){
     os << '(' << p.x << ',' << p.y << ')';
